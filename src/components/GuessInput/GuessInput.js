@@ -23,7 +23,6 @@ function GuessInput({ handleMakeGuess }) {
       <label htmlFor="guess-input">
         Enter guess:
       </label>
-      {/*pattern="[A-Z]{5}" could be used on input, as suggested by Josh, but minLength gives better a11y feedback */}
       <input
         id="guess-input"
         type="text"
