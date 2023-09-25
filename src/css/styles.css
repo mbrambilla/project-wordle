@@ -92,6 +92,7 @@ h1 {
 
 .guess {
   display: flex;
+  justify-content: center;
   gap: 4px;
   margin-bottom: 4px;
 }
