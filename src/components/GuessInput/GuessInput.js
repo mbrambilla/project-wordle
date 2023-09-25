@@ -28,7 +28,7 @@ function GuessInput({ handleMakeGuess }) {
         id="guess-input"
         type="text"
         required
-        pattern="[A-Z]{5}"
+        pattern={`[A-Z]{${NUM_WORD_LENGTH}}`}
         minLength={NUM_WORD_LENGTH}
         maxLength={NUM_WORD_LENGTH}
         className={!isValid ? "is-invalid" : undefined}
