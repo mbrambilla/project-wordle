@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { sample } from '../../utils';
-import { WORDS } from '../../data';
+import { WORDS_5 as WORDS } from '../../data';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
 
