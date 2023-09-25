@@ -1,14 +1,7 @@
 import React from 'react';
 import { range } from '../../utils';
-import { checkGuess } from '../../game-helpers';
 
-function Guess({ wordSize, guessItem, answer }) {
-  // Get guess letter status
-  let guessCheck = null;
-  if (typeof guessItem !== "undefined") {
-    guessCheck = checkGuess(guessItem, answer);
-  }
-
+function Guess({ wordSize, guessCheck }) {
   return (
     <div className="guess">
       {range(wordSize).map((index) => (

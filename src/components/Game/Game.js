@@ -2,6 +2,7 @@ import React from 'react';
 
 import { sample } from '../../utils';
 import { WORDS_4, WORDS_5 } from '../../data';
+import { checkGuess } from '../../game-helpers';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
@@ -48,10 +49,14 @@ function Game() {
     }
   }
 
+  const guessCheckList = guessList.map((item) => {
+    return checkGuess(item, answer);
+  });
+
   return (
     <>
       <WordSize wordSize={wordSize} changeWordSize={changeWordSize} />
-      <GuessResults wordSize={wordSize} guessList={guessList} answer={answer} />
+      <GuessResults wordSize={wordSize} guessCheckList={guessCheckList} />
       <GuessInput wordSize={wordSize} handleMakeGuess={handleMakeGuess} completed={completed} />
       {completed === "win" && <BannerWin count={guessList.length} restart={restart} />}
       {completed === "lose" && <BannerLose answer={answer} restart={restart} />}
