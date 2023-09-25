@@ -14,16 +14,13 @@ function Game() {
   const [guessList, setGuessList] = React.useState([]);
 
   function handleMakeGuess(guessInput) {
-    const nextList = [...guessList, {
-      id: crypto.randomUUID(),
-      value: guessInput
-    }]
+    const nextList = [...guessList, guessInput];
     setGuessList(nextList);
   }
 
   return (
     <>
-      <GuessResults results={guessList} />
+      <GuessResults guessList={guessList} />
       <GuessInput handleMakeGuess={handleMakeGuess} />
     </>
   );
