@@ -5,7 +5,8 @@ import { WORDS_4, WORDS_5 } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
-import Banner from '../Banner';
+import BannerWin from '../BannerWin';
+import BannerLose from '../BannerLose';
 import WordSize from '../WordSize';
 
 // Pick a random word on every pageload.
@@ -52,7 +53,8 @@ function Game() {
       <WordSize wordSize={wordSize} changeWordSize={changeWordSize} />
       <GuessResults wordSize={wordSize} guessList={guessList} answer={answer} />
       <GuessInput wordSize={wordSize} handleMakeGuess={handleMakeGuess} completed={completed} />
-      {completed && <Banner completed={completed} answer={answer} count={guessList.length} restart={restart} />}
+      {completed === "win" && <BannerWin count={guessList.length} restart={restart} />}
+      {completed === "lose" && <BannerLose answer={answer} restart={restart} />}
     </>
   );
 }
