@@ -13,7 +13,7 @@ html {
   --color-gray-100: hsl(0deg 0% 10%);
   --color-gray-300: hsl(0deg 0% 25%);
   --color-gray-500: hsl(0deg 0% 50%);
-  --color-gray-700: hsl(0deg 0% 75%);
+  --color-gray-700: #bfbfbf;
   --color-gray-900: hsl(0deg 0% 90%);
 }
 
@@ -246,4 +246,34 @@ h1 {
   to {
     transform: translateY(0%);
   }
+}
+
+.keyboard{
+  display: flex;
+  flex-flow: column;
+  gap: .25rem;
+}
+.keyrow {
+ display: flex;
+ justify-content: center;
+ gap: .25rem;
+}
+.key {
+  padding: .5rem;
+  font-weight: bold;
+  border-radius: .25rem;
+  color: #000;
+  background-color: var(--color-gray-900);
+}
+.key.correct {
+  background: var(--color-success);
+  color: #fff;
+}
+.key.incorrect {
+  background: var(--color-gray-300);
+  color: #fff;
+}
+.key.misplaced {
+  background: var(--color-warning);
+  color: #fff;
 }

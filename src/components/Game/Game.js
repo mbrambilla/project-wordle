@@ -6,6 +6,7 @@ import { checkGuess } from '../../game-helpers';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
+import Keyboard from '../Keyboard';
 import BannerWin from '../BannerWin';
 import BannerLose from '../BannerLose';
 import WordSize from '../WordSize';
@@ -58,6 +59,8 @@ function Game() {
       <WordSize wordSize={wordSize} changeWordSize={changeWordSize} />
       <GuessResults wordSize={wordSize} guessCheckList={guessCheckList} />
       <GuessInput wordSize={wordSize} handleMakeGuess={handleMakeGuess} completed={completed} />
+      <Keyboard guessCheckList={guessCheckList} />
+
       {completed === "win" && <BannerWin count={guessList.length} restart={restart} />}
       {completed === "lose" && <BannerLose answer={answer} restart={restart} />}
     </>
