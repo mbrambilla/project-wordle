@@ -1,7 +1,6 @@
 import React from 'react';
-import { NUM_WORD_LENGTH } from '../../constants';
 
-function GuessInput({ handleMakeGuess }) {
+function GuessInput({ wordSize, handleMakeGuess, completed }) {
   const [guessInput, setGuessInput] = React.useState('');
   const [isValid, setIsValid] = React.useState(true);
 
@@ -13,7 +12,7 @@ function GuessInput({ handleMakeGuess }) {
 
   function handleOnChange(value) {
     value = value.trim().toUpperCase();
-    const regex = new RegExp("[A-Z]{" + NUM_WORD_LENGTH + "}");
+    const regex = new RegExp("[A-Z]{" + wordSize + "}");
     const isValid = value.length > 0 && regex.test(value);
     setIsValid(isValid);
     setGuessInput(value);
@@ -28,15 +27,16 @@ function GuessInput({ handleMakeGuess }) {
         id="guess-input"
         type="text"
         required
-        pattern={`[A-Z]{${NUM_WORD_LENGTH}}`}
-        minLength={NUM_WORD_LENGTH}
-        maxLength={NUM_WORD_LENGTH}
+        pattern={`[A-Z]{${wordSize}}`}
+        minLength={wordSize}
+        maxLength={wordSize}
         className={!isValid ? "is-invalid" : undefined}
         value={guessInput}
         aria-describedby={!isValid ? "guess-input-feedback" : undefined}
         onChange={event => handleOnChange(event.target.value)}
+        disabled={completed}
       />
-      {!isValid && <div id="guess-input-feedback" className="invalid-feedback">Must be {NUM_WORD_LENGTH} characters in length and consist of the letters A-Z</div>}
+      {!isValid && <div id="guess-input-feedback" className="invalid-feedback">Must be {wordSize} characters in length and consist of the letters A-Z</div>}
     </form>
   );
 }
