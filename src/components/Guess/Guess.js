@@ -1,15 +1,27 @@
 import React from 'react';
 import { range } from '../../utils';
 import { NUM_WORD_LENGTH } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 
-function Guess({ guessItem }) {
+function Guess({ guessItem, answer }) {
+  // Get guess letter status
+  let guessCheck = null;
+  if (typeof guessItem !== "undefined") {
+    guessCheck = checkGuess(guessItem, answer);
+  }
+
+  console.log(guessCheck);
 
   return (
-    <p className="guess">
+    <div className="guess">
       {range(NUM_WORD_LENGTH).map((index) => (
-        <span key={index} className="cell">{guessItem ? guessItem[index] : undefined}</span>
-      ))}
-    </p>
+        <span key={index} className={`cell${guessCheck ? ' ' + guessCheck[index].status : ''}`}>
+          {guessCheck ? guessCheck[index].letter : undefined}
+        </span>
+      ))
+      }
+      {''}
+    </div>
   );
 }
 
